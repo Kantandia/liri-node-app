@@ -7,9 +7,12 @@ var spotify = new Spotify(keys.spotify);
 run();
 function run(){
     switch (action) {
-    
-        case "Spotify":
-            spotifySong();
+        case "concert-this":
+            concertThis();
+            break;
+            
+        case "spotify-this-song":
+            spotify();
             break;
     
         case "movie-this":
@@ -24,7 +27,7 @@ function run(){
 
 
 
-function Spotify() {
+function spotify() {
     if( !userPick ){
         userPick = "JENOVA by Nobuo Uematsu"
    };
