@@ -1,9 +1,13 @@
 require("dotenv").config();
-var fs = require('fs');
+
 
 var keys = require("./keys.js");
 
 var spotify = new Spotify(keys.spotify);
+var action = process.argv[2];
+var userPick = process.argv[3];
+
+
 run();
 function run(){
     switch (action) {
@@ -50,11 +54,10 @@ function spotify() {
 
  function movieThis() {
     if( !userPick ){
-        userPick = "Mr. Nobody."
+        userPick = "All Quiet on the Western Front"
    };
 
-    var queryUrl = "http://www.omdbapi.com/?i=" + userPick + "tt3896198&apikey=d359b717";
-
+   var queryUrl = "http://www.omdbapi.com/?t=" + userPick + "&y=&plot=short&apikey=trilogy";
     request(queryUrl, function (error, response, body) {
 
         if (!error && response.statusCode === 200) {
