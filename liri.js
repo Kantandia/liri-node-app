@@ -89,3 +89,14 @@ function doSays() {
         run();
     });
 };
+
+function concertThis()
+ var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+ request(queryUrl, function (error, response, body) {
+
+     if (!error && response.statusCode === 200) {
+
+        log.info("They are playing at "+ JSON.parse(body).venue);
+         log.info("When they go on ") + JSON.parse(body).datetime;
+     };  
+ });
