@@ -73,3 +73,19 @@ function spotify() {
         };  
     });
 };
+
+
+function doSays() {
+
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if ( error ) {
+            log.info('Error occurred: ' + error);
+            return;
+        }
+        data = data.split(",");
+        action = data[0];
+        userPick = data[1];
+
+        run();
+    });
+};
