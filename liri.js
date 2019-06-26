@@ -10,7 +10,7 @@ function run(){
         case "concert-this":
             concertThis();
             break;
-            
+
         case "spotify-this-song":
             spotify();
             break;
@@ -47,3 +47,26 @@ function spotify() {
         log.info("The album title is: " +data[0].album.name);          
     });
  };
+
+ function movieThis() {
+    if( !userPick ){
+        userPick = "Mr. Nobody."
+   };
+
+    var queryUrl = "http://www.omdbapi.com/?i=" + userPick + "tt3896198&apikey=d359b717";
+
+    request(queryUrl, function (error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            log.info("Title of the movie: " + JSON.parse(body).Title);
+            log.info("Year the movie came out: " + JSON.parse(body).Year);
+            log.info("IMDB Rating of the movie: " + JSON.parse(body).imdbRating);
+            log.info("Rotten Tomatoes Rating of the movie: " + JSON.parse(body).Ratings[2].Value);
+            log.info("Country where the movie was produced: " + JSON.parse(body).Country);
+            log.info("Language of the movie: " + JSON.parse(body).Language);
+            log.info("Plot of the movie: " + JSON.parse(body).Plot);
+            log.info("Actors in the movie: " + JSON.parse(body).Actors);
+        };  
+    });
+};
